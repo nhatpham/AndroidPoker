@@ -3,7 +3,6 @@ package io.phamily.poker;
 import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.DrawableUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -18,18 +17,29 @@ public class MainActivity extends AppCompatActivity {
     Poker p = new Poker();
     Button b;
     TextView view;
+    boolean [] selected;
+    Button drawButton;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         b = (Button) findViewById(R.id.shuffleButton);
+        drawButton = (Button) findViewById(R.id.drawButton);
         view = (TextView) findViewById(R.id.pokerHand);
+        selected = new boolean[5];
         PlayPoker();
 
         b.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 PlayPoker();
+            }
+        });
+        drawButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+
             }
         });
 
@@ -48,6 +58,73 @@ public class MainActivity extends AppCompatActivity {
         ImageView iv3 = (ImageView) findViewById(R.id.iv3);
         ImageView iv4 = (ImageView) findViewById(R.id.iv4);
         ImageView iv5 = (ImageView) findViewById(R.id.iv5);
+
+
+
+        iv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                selected[0] = !selected[0];
+
+                if(selected[0] == false)
+                    v.animate().y(v.getY() + 50f);
+                else
+                    v.animate().y(v.getY() - 50f);
+            }
+        });
+
+        iv2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                selected[1] = !selected[1];
+
+                if(selected[1] == false)
+                    v.animate().y(v.getY() + 50f);
+                else
+                    v.animate().y(v.getY() - 50f);
+            }
+        });
+
+        iv3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                selected[2] = !selected[2];
+
+                if(selected[2] == false)
+                    v.animate().y(v.getY() + 50f);
+                else
+                    v.animate().y(v.getY() - 50f);
+            }
+        });
+
+        iv4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                selected[3] = !selected[3];
+
+                if(selected[3] == false)
+                    v.animate().y(v.getY() + 50f);
+                else
+                    v.animate().y(v.getY() - 50f);
+            }
+        });
+
+        iv5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                selected[4] = !selected[4];
+
+                if(selected[4] == false)
+                    v.animate().y(v.getY() + 50f);
+                else
+                    v.animate().y(v.getY() - 50f);
+            }
+        });
 
 //        String s = p.cards.remove().toString();
 //        int res = getResources().getIdentifier(s.toLowerCase(), "drawable", getPackageName());
